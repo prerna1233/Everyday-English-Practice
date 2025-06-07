@@ -1,37 +1,9 @@
-// async function getSentence() {
-//   try {
-// // In script.js
-// const res = await fetch('http://localhost:3000/generate-sentence');
-//     if (!res.ok) throw new Error("Failed to fetch sentence");
-//     const data = await res.json();
-//     document.getElementById('hindi-sentence').textContent = data.hindi;
-//     document.getElementById('user-translation').value = '';
-//     document.getElementById('result').textContent = '';
-//   } catch (error) {
-//     document.getElementById('hindi-sentence').textContent = "⚠️ Error loading sentence.";
-//     console.error(error);
-//   }
-// }
-
-// function checkTranslation() {
-//   const userTranslation = document.getElementById('user-translation').value.trim();
-//   if (userTranslation === "") {
-//     document.getElementById('result').textContent = "⚠️ Please enter a translation.";
-//   } else {
-//     document.getElementById('result').textContent = "✅ Submitted! Ask your mentor to review.";
-//   }
-// }
-
-
-
-
-
 
 
 
 async function getSentence() {
   try {
-    const res = await fetch('http://localhost:3000/generate-sentence');
+    const res = await fetch('https://everyday-english-practice.onrender.com/generate-sentence');
     if (!res.ok) throw new Error("Failed to fetch sentence");
     const data = await res.json();
     document.getElementById('hindi-sentence').textContent = data.hindi;
@@ -52,7 +24,7 @@ async function checkTranslation() {
   }
 
   try {
-    const res = await fetch('http://localhost:3000/check-translation', {
+    const res = await fetch('https://everyday-english-practice.onrender.com/check-translation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ hindi: hindiSentence, english: userTranslation })
